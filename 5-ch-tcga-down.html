@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
-  <meta name="description" content="Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <title>5 TCGA-LAML downsampling | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
+  <meta name="description" content="5 TCGA-LAML downsampling | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta property="og:title" content="5 TCGA-LAML downsampling | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta name="twitter:title" content="5 TCGA-LAML downsampling | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="2-ch-leucegene-down.html"/>
+<link rel="prev" href="4-standardise-variants-output.html"/>
+<link rel="next" href="6-ch-refer.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -178,22 +178,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</h1>
-<p class="author"><em>Anna Quaglieri</em></p>
-</div>
-<div id="setup" class="section level1">
-<h1><span class="header-section-number">1</span> Setup</h1>
-<p>To run the workflow in the next sections, clone the repository below containing and load the R project:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">git</span> clone git@github.com:annaquaglieri16/Supporting-scripts-library-size-RNA-Seq.git</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="bu">cd</span> ./Supporting-scripts-library-size-RNA-Seq</a></code></pre></div>
-<p>The functions used for variant calling and downsampling are inside the <code>./functions</code> folder.</p>
+<div id="ch:tcga-down" class="section level1">
+<h1><span class="header-section-number">5</span> TCGA-LAML downsampling</h1>
+<p>1.24 is taken as the ratio between the mean proportion of mapped reads in the Leucegene and the TCGA-LAML cohorts. This is discussed in the Methods paper.</p>
+<p><code>TCGA-LAML-multiqc_samtools_flagstat.txt</code> was created using the <code>samtools flagstat</code> function.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">tcga &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/TCGA-LAML-multiqc_samtools_flagstat.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">info_tcga &lt;-<span class="st"> </span><span class="kw">subset</span>(tcga,<span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;Sample&quot;</span>,<span class="st">&quot;mapped_passed&quot;</span>,<span class="st">&quot;total_passed&quot;</span>,<span class="st">&quot;total_failed&quot;</span>,<span class="st">&quot;secondary_passed&quot;</span>,<span class="st">&quot;secondary_failed&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_reads =</span> (total_failed <span class="op">-</span><span class="st"> </span>secondary_failed) <span class="op">+</span><span class="st"> </span>(total_passed <span class="op">-</span><span class="st"> </span>secondary_passed),</a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">         <span class="dt">prop_mapped_passed =</span> (mapped_passed <span class="op">-</span><span class="st"> </span>secondary_passed)<span class="op">/</span>total_reads)</a>
+<a class="sourceLine" id="cb50-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb50-8" data-line-number="8">info_tcga<span class="op">$</span>total_passed_no_secondary &lt;-<span class="st"> </span>info_tcga<span class="op">$</span>mapped_passed <span class="op">-</span><span class="st"> </span>info_tcga<span class="op">$</span>secondary_passed</a>
+<a class="sourceLine" id="cb50-9" data-line-number="9"><span class="kw">summary</span>(info_tcga<span class="op">$</span>total_passed_no_secondary<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="dv">1000000</span>) <span class="co"># divide by two as flagstats reports the number of reads not fragments</span></a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   36.70   54.98   58.68   57.72   61.53   69.62</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">tot_reads &lt;-<span class="st"> </span>info_tcga <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sample,total_reads) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># total_reads is the sum of both Reads1 and Reads2</span></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Prop40 =</span> <span class="kw">round</span>((<span class="dv">80000000</span><span class="op">/</span>total_reads)<span class="op">*</span><span class="fl">1.24</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;[.]&quot;</span>) <span class="op">%&gt;%</span><span class="st">   </span><span class="co"># 80000000 = target number of reads, double the fragments </span></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name,Prop40,total_reads) </a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="kw">write_csv</span>(tot_reads,<span class="st">&quot;data/downsampling-proportion-TCGA-LAML.csv&quot;</span>)</a></code></pre></div>
 <ul>
-<li>To download and QC example files from the Leucegene cohort, see Chapter <a href="2-ch-leucegene-down.html#ch:leucegene-downsample">2.2</a></li>
-<li>To follow step by step and see the settings used to align, call and create a standardised output of the variants see Chapter <a href="3-ch-acs.html#ch:acs">3</a>. While, to run the whole workflow for the samples downloaded it is possible to directly run the script <code>./functions/align-call-stand.sh</code> after appropriately setting input files and directory and downloading the required programs.</li>
-<li>Chapter <a href="5-ch-tcga-down.html#ch:tcga-down">5</a> contains information about the proportions used to downsample the TCGA-LAML samples.</li>
+<li>Script to downsample at a certain proportion</li>
 </ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="ex">module</span> load picard-tools/2.9.4</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="ex">module</span> load samtools/1.6</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="ex">DownsampleSam</span> I=input.bam O=downsampled_output.bam PROBABILITY=sample_specific_prop RANDOM_SEED=200</a>
+<a class="sourceLine" id="cb53-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co"># Used to check the size of the doensampled file</span></a>
+<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="ex">samtools</span> flagstat downsampled_output.bam</a></code></pre></div>
 
 </div>
             </section>
@@ -201,8 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="2-ch-leucegene-down.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-standardise-variants-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-ch-refer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -233,7 +249,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/annaquaglieri16/Supporting-scripts-library-size-RNA-Seq/tree/master/index.Rmd",
+"link": "https://github.com/annaquaglieri16/Supporting-scripts-library-size-RNA-Seq/tree/master/Rmd/03-TCGA-LAML-downsampling.Rmd",
 "text": "Edit"
 },
 "history": {
