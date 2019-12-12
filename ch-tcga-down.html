@@ -126,9 +126,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setup</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-used"><i class="fa fa-check"></i><b>1.1</b> Software used</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html"><i class="fa fa-check"></i><b>2</b> Download, quality control and downsample the Leucegene RNA-Seq samples</a><ul>
-<li class="chapter" data-level="2.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#ch:leucegene-download"><i class="fa fa-check"></i><b>2.1</b> Download RNA-Seq data from GEO</a><ul>
+<li class="chapter" data-level="2.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#download-rna-seq-data-from-geo"><i class="fa fa-check"></i><b>2.1</b> Download RNA-Seq data from GEO</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#get-srx-sample-names"><i class="fa fa-check"></i><b>2.1.1</b> Get SRX sample names</a></li>
 <li class="chapter" data-level="2.1.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#create-ncbi-query"><i class="fa fa-check"></i><b>2.1.2</b> Create NCBI query</a></li>
 </ul></li>
@@ -176,34 +178,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">5</span> TCGA-LAML downsampling</h1>
 <p>1.24 is taken as the ratio between the mean proportion of mapped reads in the Leucegene and the TCGA-LAML cohorts. This is discussed in the Methods paper.</p>
 <p><code>TCGA-LAML-multiqc_samtools_flagstat.txt</code> was created using the <code>samtools flagstat</code> function.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">tcga &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/TCGA-LAML-multiqc_samtools_flagstat.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4">info_tcga &lt;-<span class="st"> </span><span class="kw">subset</span>(tcga,<span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;Sample&quot;</span>,<span class="st">&quot;mapped_passed&quot;</span>,<span class="st">&quot;total_passed&quot;</span>,<span class="st">&quot;total_failed&quot;</span>,<span class="st">&quot;secondary_passed&quot;</span>,<span class="st">&quot;secondary_failed&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_reads =</span> (total_failed <span class="op">-</span><span class="st"> </span>secondary_failed) <span class="op">+</span><span class="st"> </span>(total_passed <span class="op">-</span><span class="st"> </span>secondary_passed),</a>
-<a class="sourceLine" id="cb50-6" data-line-number="6">         <span class="dt">prop_mapped_passed =</span> (mapped_passed <span class="op">-</span><span class="st"> </span>secondary_passed)<span class="op">/</span>total_reads)</a>
-<a class="sourceLine" id="cb50-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb50-8" data-line-number="8">info_tcga<span class="op">$</span>total_passed_no_secondary &lt;-<span class="st"> </span>info_tcga<span class="op">$</span>mapped_passed <span class="op">-</span><span class="st"> </span>info_tcga<span class="op">$</span>secondary_passed</a>
-<a class="sourceLine" id="cb50-9" data-line-number="9"><span class="kw">summary</span>(info_tcga<span class="op">$</span>total_passed_no_secondary<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="dv">1000000</span>) <span class="co"># divide by two as flagstats reports the number of reads not fragments</span></a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">tcga &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/TCGA-LAML-multiqc_samtools_flagstat.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">info_tcga &lt;-<span class="st"> </span><span class="kw">subset</span>(tcga,<span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;Sample&quot;</span>,<span class="st">&quot;mapped_passed&quot;</span>,<span class="st">&quot;total_passed&quot;</span>,<span class="st">&quot;total_failed&quot;</span>,<span class="st">&quot;secondary_passed&quot;</span>,<span class="st">&quot;secondary_failed&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_reads =</span> (total_failed <span class="op">-</span><span class="st"> </span>secondary_failed) <span class="op">+</span><span class="st"> </span>(total_passed <span class="op">-</span><span class="st"> </span>secondary_passed),</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6">         <span class="dt">prop_mapped_passed =</span> (mapped_passed <span class="op">-</span><span class="st"> </span>secondary_passed)<span class="op">/</span>total_reads)</a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb52-8" data-line-number="8">info_tcga<span class="op">$</span>total_passed_no_secondary &lt;-<span class="st"> </span>info_tcga<span class="op">$</span>mapped_passed <span class="op">-</span><span class="st"> </span>info_tcga<span class="op">$</span>secondary_passed</a>
+<a class="sourceLine" id="cb52-9" data-line-number="9"><span class="kw">summary</span>(info_tcga<span class="op">$</span>total_passed_no_secondary<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="dv">1000000</span>) <span class="co"># divide by two as flagstats reports the number of reads not fragments</span></a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   36.70   54.98   58.68   57.72   61.53   69.62</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">tot_reads &lt;-<span class="st"> </span>info_tcga <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sample,total_reads) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># total_reads is the sum of both Reads1 and Reads2</span></a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Prop40 =</span> <span class="kw">round</span>((<span class="dv">80000000</span><span class="op">/</span>total_reads)<span class="op">*</span><span class="fl">1.24</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;[.]&quot;</span>) <span class="op">%&gt;%</span><span class="st">   </span><span class="co"># 80000000 = target number of reads, double the fragments </span></a>
-<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name,Prop40,total_reads) </a>
-<a class="sourceLine" id="cb52-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="kw">write_csv</span>(tot_reads,<span class="st">&quot;data/downsampling-proportion-TCGA-LAML.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">tot_reads &lt;-<span class="st"> </span>info_tcga <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sample,total_reads) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># total_reads is the sum of both Reads1 and Reads2</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Prop40 =</span> <span class="kw">round</span>((<span class="dv">80000000</span><span class="op">/</span>total_reads)<span class="op">*</span><span class="fl">1.24</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;[.]&quot;</span>) <span class="op">%&gt;%</span><span class="st">   </span><span class="co"># 80000000 = target number of reads, double the fragments </span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name,Prop40,total_reads) </a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="kw">write_csv</span>(tot_reads,<span class="st">&quot;data/downsampling-proportion-TCGA-LAML.csv&quot;</span>)</a></code></pre></div>
 <ul>
 <li>Script to downsample at a certain proportion</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="ex">module</span> load picard-tools/2.9.4</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="ex">module</span> load samtools/1.6</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="ex">DownsampleSam</span> I=input.bam O=downsampled_output.bam PROBABILITY=sample_specific_prop RANDOM_SEED=200</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co"># Used to check the size of the doensampled file</span></a>
-<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="ex">samtools</span> flagstat downsampled_output.bam</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="ex">module</span> load picard-tools/2.9.4</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="ex">module</span> load samtools/1.6</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="ex">DownsampleSam</span> I=input.bam O=downsampled_output.bam PROBABILITY=sample_specific_prop RANDOM_SEED=200</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="co"># Used to check the size of the doensampled file</span></a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"><span class="ex">samtools</span> flagstat downsampled_output.bam</a></code></pre></div>
 
 </div>
             </section>
@@ -254,7 +256,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Supporting-libsize-scripts-book.pdf"],
 "toc": {
 "collapse": "subsection"
 }

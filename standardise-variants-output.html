@@ -126,9 +126,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setup</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-used"><i class="fa fa-check"></i><b>1.1</b> Software used</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html"><i class="fa fa-check"></i><b>2</b> Download, quality control and downsample the Leucegene RNA-Seq samples</a><ul>
-<li class="chapter" data-level="2.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#ch:leucegene-download"><i class="fa fa-check"></i><b>2.1</b> Download RNA-Seq data from GEO</a><ul>
+<li class="chapter" data-level="2.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#download-rna-seq-data-from-geo"><i class="fa fa-check"></i><b>2.1</b> Download RNA-Seq data from GEO</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#get-srx-sample-names"><i class="fa fa-check"></i><b>2.1.1</b> Get SRX sample names</a></li>
 <li class="chapter" data-level="2.1.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#create-ncbi-query"><i class="fa fa-check"></i><b>2.1.2</b> Create NCBI query</a></li>
 </ul></li>
@@ -177,47 +179,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The function <code>Rscript ./functions/call_variants.R</code> will return as output variants in a standardised format so that they can be easily compared across callers. This means that fields of interest, like variant allele frequency and depth at a variant site, which are usually provided in with different names across callers, are returned with the same names. The standardised variants are returned as <code>.txt</code> files. The functions in <code>call_variants.R</code> aimed at standardising variants are also the same ones present in the <code>varikondo</code><span class="citation">(Quaglieri and Flensburg, <a href="#ref-Quaglieri_undated-yh">n.d.</a>)</span> R package available on github. Examples on how to use its functions are provided in the package website <a href="https://annaquaglieri16.github.io/varikondo/articles/vignette.html" class="uri">https://annaquaglieri16.github.io/varikondo/articles/vignette.html</a> and below.</p>
 <p>The earlier version of the functions returns some duplicated rows compared to using <code>varikondo</code> but this won’t affect the results of the study as we only looked at unique variants.</p>
 <p>The <code>.txt</code> files <code>SRX729580_germline_final.txt</code> produced for each caller are used for sensitivity analysis and they are processed as discussed in the Methods paper.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># devtools::install_github(&quot;annaquaglieri16/varikondo&quot;)</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co"># detach(&quot;package:varikondo&quot;)</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="kw">library</span>(varikondo)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">utils<span class="op">::</span><span class="kw">packageVersion</span>(<span class="st">&quot;varikondo&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># devtools::install_github(&quot;annaquaglieri16/varikondo&quot;)</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co"># detach(&quot;package:varikondo&quot;)</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw">library</span>(varikondo)</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">utils<span class="op">::</span><span class="kw">packageVersion</span>(<span class="st">&quot;varikondo&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &#39;0.10.8&#39;</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># Variant file created with ./functions/call_variants.R</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">mutect.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/mutect/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw">dim</span>(mutect.table)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Variant file created with ./functions/call_variants.R</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">mutect.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/mutect/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">dim</span>(mutect.table)</a></code></pre></div>
 <pre><code>## [1] 3005   82</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">duplicated</span>(mutect.table))</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">duplicated</span>(mutect.table))</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">mutect.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/mutect/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;mutect&quot;</span>,<span class="dt">vep=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">dim</span>(mutect.varik)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">mutect.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/mutect/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;mutect&quot;</span>,<span class="dt">vep=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw">dim</span>(mutect.varik)</a></code></pre></div>
 <pre><code>## [1] 3003   87</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co"># Variant file created with ./functions/call_variants.R</span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">varscan.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/varscan/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw">dim</span>(varscan.table)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co"># Variant file created with ./functions/call_variants.R</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">varscan.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/varscan/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">dim</span>(varscan.table)</a></code></pre></div>
 <pre><code>## [1] 1031   82</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">varscan.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/varscan/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;varscan&quot;</span>,<span class="dt">vep =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">dim</span>(varscan.varik)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">varscan.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/varscan/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;varscan&quot;</span>,<span class="dt">vep =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">dim</span>(varscan.varik)</a></code></pre></div>
 <pre><code>## [1] 1031   87</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># VarDict file created with ./functions/call_variants.R</span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2">vardict.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/vardict/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb41-3" data-line-number="3">vardict.table<span class="op">$</span>key &lt;-<span class="st"> </span><span class="kw">paste</span>(vardict.table<span class="op">$</span>Location,vardict.table<span class="op">$</span>ref,</a>
-<a class="sourceLine" id="cb41-4" data-line-number="4">                           vardict.table<span class="op">$</span>alt,vardict.table<span class="op">$</span>Existing_variation,vardict.table<span class="op">$</span>Consequence,<span class="dt">sep=</span><span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="kw">dim</span>(vardict.table)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co"># VarDict file created with ./functions/call_variants.R</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">vardict.table &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/test-variants/vardict/regions_caller_defaults/annotated_variants/SRX729580_germline_final.txt&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">vardict.table<span class="op">$</span>key &lt;-<span class="st"> </span><span class="kw">paste</span>(vardict.table<span class="op">$</span>Location,vardict.table<span class="op">$</span>ref,</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">                           vardict.table<span class="op">$</span>alt,vardict.table<span class="op">$</span>Existing_variation,vardict.table<span class="op">$</span>Consequence,<span class="dt">sep=</span><span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="kw">dim</span>(vardict.table)</a></code></pre></div>
 <pre><code>## [1] 2799   84</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">duplicated</span>(vardict.table))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">duplicated</span>(vardict.table))</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2">vardict.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/vardict/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;vardict&quot;</span>,<span class="dt">vep =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">dim</span>(vardict.varik)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="co"># Read and parse with varikondo</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">vardict.varik &lt;-<span class="st"> </span>varikondo<span class="op">::</span><span class="kw">parse_vcf_output</span>(<span class="st">&quot;data/test-variants/vardict/regions_caller_defaults/annotated_variants/SRX729580_germline_annotated.vcf&quot;</span>, <span class="dt">caller =</span> <span class="st">&quot;vardict&quot;</span>,<span class="dt">vep =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw">dim</span>(vardict.varik)</a></code></pre></div>
 <pre><code>## [1] 2795   85</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">vardict.varik<span class="op">$</span>key &lt;-<span class="st"> </span><span class="kw">paste</span>(vardict.varik<span class="op">$</span>Location,vardict.varik<span class="op">$</span>ref,</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2">                           vardict.varik<span class="op">$</span>alt,vardict.varik<span class="op">$</span>Existing_variation,vardict.varik<span class="op">$</span>Consequence,<span class="dt">sep=</span><span class="st">&quot;.&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co"># All variants parsed with the previous function are also present when using varikondo</span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">vardict.table<span class="op">$</span>key[<span class="op">!</span>(vardict.table<span class="op">$</span>key <span class="op">%in%</span><span class="st"> </span>vardict.varik<span class="op">$</span>key)]</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">vardict.varik<span class="op">$</span>key &lt;-<span class="st"> </span><span class="kw">paste</span>(vardict.varik<span class="op">$</span>Location,vardict.varik<span class="op">$</span>ref,</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">                           vardict.varik<span class="op">$</span>alt,vardict.varik<span class="op">$</span>Existing_variation,vardict.varik<span class="op">$</span>Consequence,<span class="dt">sep=</span><span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># All variants parsed with the previous function are also present when using varikondo</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">vardict.table<span class="op">$</span>key[<span class="op">!</span>(vardict.table<span class="op">$</span>key <span class="op">%in%</span><span class="st"> </span>vardict.varik<span class="op">$</span>key)]</a></code></pre></div>
 <pre><code>## character(0)</code></pre>
 
 </div>
@@ -275,7 +277,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Supporting-libsize-scripts-book.pdf"],
 "toc": {
 "collapse": "subsection"
 }
