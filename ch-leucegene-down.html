@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
-  <meta name="description" content="2 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <title>3 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
+  <meta name="description" content="3 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta property="og:title" content="3 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta name="twitter:title" content="3 Download, quality control and downsample the Leucegene RNA-Seq samples | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="setup.html"/>
 <link rel="next" href="ch-acs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -126,37 +126,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setup</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-used"><i class="fa fa-check"></i><b>1.1</b> Software used</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Aim of this document</a></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="setup.html"><a href="setup.html#software-used"><i class="fa fa-check"></i><b>2.1</b> Software used</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html"><i class="fa fa-check"></i><b>2</b> Download, quality control and downsample the Leucegene RNA-Seq samples</a><ul>
-<li class="chapter" data-level="2.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#download-rna-seq-data-from-geo"><i class="fa fa-check"></i><b>2.1</b> Download RNA-Seq data from GEO</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#get-srx-sample-names"><i class="fa fa-check"></i><b>2.1.1</b> Get SRX sample names</a></li>
-<li class="chapter" data-level="2.1.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#create-ncbi-query"><i class="fa fa-check"></i><b>2.1.2</b> Create NCBI query</a></li>
+<li class="chapter" data-level="3" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html"><i class="fa fa-check"></i><b>3</b> Download, quality control and downsample the Leucegene RNA-Seq samples</a><ul>
+<li class="chapter" data-level="3.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#download-rna-seq-data-from-geo"><i class="fa fa-check"></i><b>3.1</b> Download RNA-Seq data from GEO</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#get-srx-sample-names"><i class="fa fa-check"></i><b>3.1.1</b> Get SRX sample names</a></li>
+<li class="chapter" data-level="3.1.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#create-ncbi-query"><i class="fa fa-check"></i><b>3.1.2</b> Create NCBI query</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#ch:leucegene-downsample"><i class="fa fa-check"></i><b>2.2</b> Downsampling FASTQ files to a fixed number of reads</a></li>
+<li class="chapter" data-level="3.2" data-path="ch-leucegene-down.html"><a href="ch-leucegene-down.html#ch:leucegene-downsample"><i class="fa fa-check"></i><b>3.2</b> Downsampling FASTQ files to a fixed number of reads</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ch-acs.html"><a href="ch-acs.html"><i class="fa fa-check"></i><b>3</b> Align, call and standardise</a><ul>
-<li class="chapter" data-level="3.1" data-path="ch-acs.html"><a href="ch-acs.html#ch:align"><i class="fa fa-check"></i><b>3.1</b> Alignement, Read Groups, Mark duplicates</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="ch-acs.html"><a href="ch-acs.html#star-index"><i class="fa fa-check"></i><b>3.1.1</b> STAR index</a></li>
-<li class="chapter" data-level="3.1.2" data-path="ch-acs.html"><a href="ch-acs.html#star-1pass"><i class="fa fa-check"></i><b>3.1.2</b> STAR-1pass</a></li>
-<li class="chapter" data-level="3.1.3" data-path="ch-acs.html"><a href="ch-acs.html#star-2pass"><i class="fa fa-check"></i><b>3.1.3</b> STAR-2pass</a></li>
-<li class="chapter" data-level="3.1.4" data-path="ch-acs.html"><a href="ch-acs.html#sec:post-align"><i class="fa fa-check"></i><b>3.1.4</b> Processing post alignment</a></li>
+<li class="chapter" data-level="4" data-path="ch-acs.html"><a href="ch-acs.html"><i class="fa fa-check"></i><b>4</b> Align, call and standardise</a><ul>
+<li class="chapter" data-level="4.1" data-path="ch-acs.html"><a href="ch-acs.html#ch:align"><i class="fa fa-check"></i><b>4.1</b> Alignement, Read Groups, Mark duplicates</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="ch-acs.html"><a href="ch-acs.html#star-index"><i class="fa fa-check"></i><b>4.1.1</b> STAR index</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch-acs.html"><a href="ch-acs.html#star-1pass"><i class="fa fa-check"></i><b>4.1.2</b> STAR-1pass</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch-acs.html"><a href="ch-acs.html#star-2pass"><i class="fa fa-check"></i><b>4.1.3</b> STAR-2pass</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch-acs.html"><a href="ch-acs.html#sec:post-align"><i class="fa fa-check"></i><b>4.1.4</b> Processing post alignment</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="ch-acs.html"><a href="ch-acs.html#gatk-pre-processing-to-call-variants-with-mutect-and-varscan"><i class="fa fa-check"></i><b>3.2</b> GATK pre-processing to call variants with MuTect and VarScan</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="ch-acs.html"><a href="ch-acs.html#splitncigarreads"><i class="fa fa-check"></i><b>3.2.1</b> SplitNCigarReads</a></li>
-<li class="chapter" data-level="3.2.2" data-path="ch-acs.html"><a href="ch-acs.html#base-recalibration"><i class="fa fa-check"></i><b>3.2.2</b> Base recalibration</a></li>
+<li class="chapter" data-level="4.2" data-path="ch-acs.html"><a href="ch-acs.html#gatk-pre-processing-to-call-variants-with-mutect-and-varscan"><i class="fa fa-check"></i><b>4.2</b> GATK pre-processing to call variants with MuTect and VarScan</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="ch-acs.html"><a href="ch-acs.html#splitncigarreads"><i class="fa fa-check"></i><b>4.2.1</b> SplitNCigarReads</a></li>
+<li class="chapter" data-level="4.2.2" data-path="ch-acs.html"><a href="ch-acs.html#base-recalibration"><i class="fa fa-check"></i><b>4.2.2</b> Base recalibration</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="ch-acs.html"><a href="ch-acs.html#ch:call-variants"><i class="fa fa-check"></i><b>3.3</b> Variant calling</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="ch-acs.html"><a href="ch-acs.html#mutect2-settings"><i class="fa fa-check"></i><b>3.3.1</b> MuTect2 settings</a></li>
-<li class="chapter" data-level="3.3.2" data-path="ch-acs.html"><a href="ch-acs.html#samtools-varscan2-settings"><i class="fa fa-check"></i><b>3.3.2</b> Samtools + VarScan2 settings</a></li>
-<li class="chapter" data-level="3.3.3" data-path="ch-acs.html"><a href="ch-acs.html#vardict-settings"><i class="fa fa-check"></i><b>3.3.3</b> VarDict settings</a></li>
-<li class="chapter" data-level="3.3.4" data-path="ch-acs.html"><a href="ch-acs.html#vep-settings"><i class="fa fa-check"></i><b>3.3.4</b> VEP settings</a></li>
+<li class="chapter" data-level="4.3" data-path="ch-acs.html"><a href="ch-acs.html#ch:call-variants"><i class="fa fa-check"></i><b>4.3</b> Variant calling</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="ch-acs.html"><a href="ch-acs.html#mutect2-settings"><i class="fa fa-check"></i><b>4.3.1</b> MuTect2 settings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch-acs.html"><a href="ch-acs.html#samtools-varscan2-settings"><i class="fa fa-check"></i><b>4.3.2</b> Samtools + VarScan2 settings</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ch-acs.html"><a href="ch-acs.html#vardict-settings"><i class="fa fa-check"></i><b>4.3.3</b> VarDict settings</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ch-acs.html"><a href="ch-acs.html#vep-settings"><i class="fa fa-check"></i><b>4.3.4</b> VEP settings</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="ch-acs.html"><a href="ch-acs.html#standardise-variants-output"><i class="fa fa-check"></i><b>3.4</b> Standardise variants output</a></li>
+<li class="chapter" data-level="4.4" data-path="ch-acs.html"><a href="ch-acs.html#standardise-variants-output"><i class="fa fa-check"></i><b>4.4</b> Standardise variants output</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="ch-tcga-down.html"><a href="ch-tcga-down.html"><i class="fa fa-check"></i><b>4</b> TCGA-LAML downsampling</a></li>
-<li class="chapter" data-level="5" data-path="ch-tcga-truth.html"><a href="ch-tcga-truth.html"><i class="fa fa-check"></i><b>5</b> TCGA variant truth sets</a></li>
+<li class="chapter" data-level="5" data-path="ch-tcga-down.html"><a href="ch-tcga-down.html"><i class="fa fa-check"></i><b>5</b> TCGA-LAML downsampling</a></li>
 <li class="chapter" data-level="6" data-path="ch-deploy.html"><a href="ch-deploy.html"><i class="fa fa-check"></i><b>6</b> Gitbook publication and deployment</a></li>
 <li class="chapter" data-level="7" data-path="ch-refer.html"><a href="ch-refer.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 </ul>
@@ -177,13 +177,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="ch:leucegene-down" class="section level1">
-<h1><span class="header-section-number">2</span> Download, quality control and downsample the Leucegene RNA-Seq samples</h1>
+<h1><span class="header-section-number">3</span> Download, quality control and downsample the Leucegene RNA-Seq samples</h1>
 <div id="download-rna-seq-data-from-geo" class="section level2">
-<h2><span class="header-section-number">2.1</span> Download RNA-Seq data from GEO</h2>
+<h2><span class="header-section-number">3.1</span> Download RNA-Seq data from GEO</h2>
 <p>The initial unaligned RNA-Seq CBF-AML samples are downloaded from <a href="https://www.ncbi.nlm.nih.gov/geo/">GEO</a> using the accession numbers GSE49642, GSE52656, GSE62190, GSE66917, and GSE67039. Only 46 FASTQ files of samples whose mutations are reported in Supplemental Table 3 of <span class="citation">(Lavallée et al. <a href="#ref-Lavallee2016-sf">2016</a>)</span> are kept for the analysis. Sample SRX381851 is removed due to low number of available reads. The file <code>data/CBF_AML_samples.csv</code> contains the sample names of the 46 samples used in the study.</p>
 <p>Below is an example using accession number GSE52656 where one of the CBF-AML samples is present, namely 07H099.</p>
 <div id="get-srx-sample-names" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Get SRX sample names</h3>
+<h3><span class="header-section-number">3.1.1</span> Get SRX sample names</h3>
 <p>The <code>GEOquery</code> package can be used to extract <code>SRX</code> files linked to an accession number.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># CRAN packages</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
@@ -208,13 +208,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb5-7" data-line-number="7">}</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw">series_matrix_info</span>(<span class="st">&quot;GSE62190&quot;</span>) </a></code></pre></div>
-<p>Every row in Table <a href="ch-leucegene-down.html#tab:SRX">2.1</a> contains sample names (<code>title</code>) and <code>GSM</code> numbers. In order to download a particular sample we need the <code>SRA</code> terms which are the names starting with: <code>SRX***</code> in the <code>relation.1</code> column.</p>
+<p>Every row in Table <a href="ch-leucegene-down.html#tab:SRX">3.1</a> contains sample names (<code>title</code>) and <code>GSM</code> numbers. In order to download a particular sample we need the <code>SRA</code> terms which are the names starting with: <code>SRX***</code> in the <code>relation.1</code> column.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">matrix_file &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(<span class="kw">here</span>(),<span class="st">&quot;data&quot;</span>),<span class="dt">pattern =</span> <span class="st">&quot;GSE&quot;</span>,<span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">GSEmatrix &lt;-<span class="st"> </span><span class="kw">read_csv</span>(matrix_file)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw">kable</span>(GSEmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],<span class="dt">caption=</span><span class="st">&quot;SRX sample names linked to the accession number GSE62190&quot;</span>)</a></code></pre></div>
 <table>
-<caption><span id="tab:SRX">Table 2.1: </span>SRX sample names linked to the accession number GSE62190</caption>
+<caption><span id="tab:SRX">Table 3.1: </span>SRX sample names linked to the accession number GSE62190</caption>
 <thead>
 <tr class="header">
 <th align="left">title</th>
@@ -301,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb8-3" data-line-number="3">cbf.samples &lt;-<span class="st"> </span>GSEmatrix[GSEmatrix<span class="op">$</span>title <span class="op">%in%</span><span class="st"> </span>CBF_AML_info<span class="op">$</span>title, ]</a></code></pre></div>
 </div>
 <div id="create-ncbi-query" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Create NCBI query</h3>
+<h3><span class="header-section-number">3.1.2</span> Create NCBI query</h3>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">search_ncbi &lt;-<span class="st"> </span><span class="kw">paste</span>(cbf.samples<span class="op">$</span>SRX,<span class="dt">collapse=</span><span class="st">&quot; OR &quot;</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">search_ncbi</a></code></pre></div>
 <pre><code>## [1] &quot;SRX729580 OR SRX729581 OR SRX729582 OR SRX729583 OR SRX729584 OR SRX729585 OR SRX729586 OR SRX729587 OR SRX729588 OR SRX729589 OR SRX729590 OR SRX729591 OR SRX729592 OR SRX729602 OR SRX729603 OR SRX729604 OR SRX729605 OR SRX729606 OR SRX729607 OR SRX729608 OR SRX729609 OR SRX729610 OR SRX729611 OR SRX729612 OR SRX729613 OR SRX729615 OR SRX729616 OR SRX729617 OR SRX729618 OR SRX729619 OR SRX729620 OR SRX729621 OR SRX729622 OR SRX729623 OR SRX729624 OR SRX729625 OR SRX729626 OR SRX729627 OR SRX729628 OR SRX729629 OR SRX729630 OR SRX729631 OR SRX729632 OR SRX729633&quot;</code></pre>
@@ -340,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="ch:leucegene-downsample" class="section level2">
-<h2><span class="header-section-number">2.2</span> Downsampling FASTQ files to a fixed number of reads</h2>
+<h2><span class="header-section-number">3.2</span> Downsampling FASTQ files to a fixed number of reads</h2>
 <p>Each sample was sequenced over multiple lanes and the FASTQ files for one sample were first concatenated and then downsampled. In the example below only the the FASTQ files whose samples are defined in the second argument (<code>./data/sample-to-merge.txt</code>) are combined. The function needs to be run in the directory where the files are saved.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="bu">cd</span> ./data/fastq-files</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="ex">python</span> ../../functions/combined_fastqs.py ../match-SRX-SRR.txt ../sample-to-merge.txt</a>
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="ch-acs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

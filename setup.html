@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Gitbook publication and deployment | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
-  <meta name="description" content="6 Gitbook publication and deployment | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <title>2 Setup | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq</title>
+  <meta name="description" content="2 Setup | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Gitbook publication and deployment | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta property="og:title" content="2 Setup | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Gitbook publication and deployment | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
+  <meta name="twitter:title" content="2 Setup | Supporting scripts: Finding a suitable library size to call variants in RNA-Seq" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ch-tcga-down.html"/>
-<link rel="next" href="ch-refer.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="ch-leucegene-down.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -176,15 +176,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ch:deploy" class="section level1">
-<h1><span class="header-section-number">6</span> Gitbook publication and deployment</h1>
-<p>The <code>gitbook</code> was published with <code>bookdown</code><span class="citation">(Xie <a href="#ref-bookdown">2016</a>)</span> and deployed using <a href="https://app.netlify.com/">Netlify</a>.</p>
+<div id="setup" class="section level1">
+<h1><span class="header-section-number">2</span> Setup</h1>
+<p>To run the workflow in the next sections, clone the repository below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">git</span> clone git@github.com:annaquaglieri16/Supporting-scripts-library-size-RNA-Seq.git</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bu">cd</span> ./Supporting-scripts-library-size-RNA-Seq</a></code></pre></div>
+<p>The functions used for variant calling and downsampling are inside the <code>./functions</code> folder.</p>
+<ul>
+<li>Chapter <a href="ch-leucegene-down.html#ch:leucegene-down">3</a> contains the steps to download and run QC analyses on example files from the Leucegene cohort. The script <code>./functions/download-and-qc.sh</code> contains only the scripts without comments.</li>
+<li>To follow the steps and settings used to align, call and create a standardised output of the variants, see Chapter <a href="ch-acs.html#ch:acs">4</a>. Once the examples files are downloaded and pre-processed it is possible to run the whole workflow by running the script <code>./functions/align-call-stand.sh</code>, after appropriately setting input files and directory and downloading the required programs.</li>
+<li>Chapter <a href="ch-tcga-down.html#ch:tcga-down">5</a> contains information about the proportions used to downsample the TCGA-LAML samples.</li>
+</ul>
+<div id="software-used" class="section level2">
+<h2><span class="header-section-number">2.1</span> Software used</h2>
+<ul>
+<li><code>R/3.5.2</code></li>
+</ul>
+<p>Loaded on Unix</p>
+<ul>
+<li><code>sra-toolkit/2.8.1</code></li>
+<li><code>fastqc/0.11.8</code></li>
+<li><code>python/3.6.0</code> (for <a href="https://multiqc.info/">MultiQC</a>)</li>
+<li><code>parallel</code></li>
+<li><code>STAR/2.5</code></li>
+<li><code>sambamba/0.6.6</code></li>
+<li><code>picard-tools/2.20.2</code></li>
+<li><code>vardict/1.5.1</code> (loads <code>R3.5.2</code>)</li>
+<li><code>gatk/3.7.0</code></li>
+<li><code>varscan/2.3.9</code></li>
+<li><code>vcftools/0.1.13</code></li>
+<li><code>samtools/1.6</code></li>
+<li><code>ensembl-vep/89.0</code></li>
+<li><code>vcflib/1.0.0-rc1</code></li>
+</ul>
 
-</div>
-<h3> References</h3>
-<div id="refs" class="references">
-<div id="ref-bookdown">
-<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
 </div>
 </div>
             </section>
@@ -192,8 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="ch-tcga-down.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ch-refer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch-leucegene-down.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
