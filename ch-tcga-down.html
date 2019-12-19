@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="ch-acs.html"/>
-<link rel="next" href="ch-refer.html"/>
+<link rel="next" href="ch-tcga-truth.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -156,7 +156,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="ch-acs.html"><a href="ch-acs.html#standardise-variants-output"><i class="fa fa-check"></i><b>3.4</b> Standardise variants output</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="ch-tcga-down.html"><a href="ch-tcga-down.html"><i class="fa fa-check"></i><b>4</b> TCGA-LAML downsampling</a></li>
-<li class="chapter" data-level="5" data-path="ch-refer.html"><a href="ch-refer.html"><i class="fa fa-check"></i><b>5</b> References</a></li>
+<li class="chapter" data-level="5" data-path="ch-tcga-truth.html"><a href="ch-tcga-truth.html"><i class="fa fa-check"></i><b>5</b> TCGA variant truth sets</a></li>
+<li class="chapter" data-level="6" data-path="ch-deploy.html"><a href="ch-deploy.html"><i class="fa fa-check"></i><b>6</b> Gitbook publication and deployment</a></li>
+<li class="chapter" data-level="7" data-path="ch-refer.html"><a href="ch-refer.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 </ul>
 
       </nav>
@@ -195,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb51-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Name&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;[.]&quot;</span>) <span class="op">%&gt;%</span><span class="st">   </span><span class="co"># 80000000 = target number of reads, double the fragments </span></a>
 <a class="sourceLine" id="cb51-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name,Prop40,total_reads) </a>
 <a class="sourceLine" id="cb51-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="kw">write_csv</span>(tot_reads,<span class="st">&quot;data/downsampling-proportion-TCGA-LAML.csv&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="kw">write_csv</span>(tot_reads,<span class="st">&quot;data/AdditionalTables/TableS4-downsampling-proportion-TCGA-LAML.csv&quot;</span>)</a></code></pre></div>
 <ul>
 <li>Script to downsample at a certain proportion</li>
 </ul>
@@ -214,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="ch-acs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ch-refer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ch-tcga-truth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
